@@ -1,4 +1,9 @@
 #!/bin/bash
+# 检查是否使用 root 权限执行
+if [ "$(id -u)" != "0" ]; then
+    echo "当前使用普通账号权限，请使用root权限执行该脚本!"
+    exit 1
+fi
 
 # 检查系统版本
 os_name=$(grep '^NAME=' /etc/os-release | cut -d'=' -f2 | tr -d '"')
